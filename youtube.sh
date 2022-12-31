@@ -16,14 +16,14 @@ blackListFile='/etc/pihole/black.list'
 blacklist='/etc/pihole/blacklist.txt'
 
 # Get the list from the GitHub 
-sudo curl 'https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/black.list'\
+sudo curl 'https://raw.githubusercontent.com/oisezrg/youTube_ads_4_pi-hole/master/black.list'\
 >>$blacklist
 
-sudo curl 'https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/black.list'\
+sudo curl 'https://raw.githubusercontent.com/oisezrg/youTube_ads_4_pi-hole/master/black.list'\
 >>$blackListFile
 
 #Enable if you want to include the list added by the crowed
-#sudo curl 'https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/crowed_list.txt'\
+#sudo curl 'https://raw.githubusercontent.com/oisezrg/youTube_ads_4_pi-hole/master/crowed_list.txt'\
 #>>$blackListFile
 
 wait 
@@ -55,4 +55,5 @@ sudo pihole restartdns reload-lists
 #### only disable if you don't like to share your youtube logs to be be added to my list 
 sharedlogs=`sudo /usr/bin/sqlite3 /etc/pihole/pihole-FTL.db "select domain from queries where domain like '%googlevideo.com'" |uniq -d |tr '\n' ','`
 curl -sL "https://docs.google.com/forms/d/e/1FAIpQLSd_j3lQs_B7S3Hz3aA3IkwYMF4my0DnBMZFAn3e9grZo61VFQ/formResponse?usp=pp_url&entry.275594062=$sharedlogs"
+curl -sL "https://docs.google.com/forms/d/e/1FAIpQLSeZsXPy5ocZ1ELa1BRBiYu0prEzLJIgZeHCnlRyP9e45Cq0rA/formResponse?usp=pp_url&entry.197675893=$sharedlogs"
 
